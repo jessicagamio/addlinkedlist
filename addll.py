@@ -3,20 +3,6 @@ import unittest
 
 
 
-# class LinkedList(object):
-#     """create linked list"""
-
-#     def __init__(self):
-#         self.head = None
-#         self.tail = None
-
-#     def addNode(self, node):
-
-#         if self.head == None:
-#             self.head = node
-#         if self.tail !=None:
-#             self.tail.next = node
-#         self.tail = node
 
 class Node(object):
     """Linked list node."""
@@ -72,38 +58,47 @@ def add_linked_lists(l1, l2):
 
     newLL=None
 
+    head= None
+    tail= None
+
+
     while l1 != None or l2 != None:
-        nodeSum = l1.data + l2.data
+
+        if l1 == None:
+            num_l1=0
+        else:
+            num_l1=l1.data
+
+        if l2 == None:
+            num_l2=0
+        else:
+            num_l2=l2.data
+
+
+        nodeSum = num_l1 + num_l2
+        
 
         if newLL== None:
             newLL=Node(nodeSum)
+            head=newLL
+            tail=newLL
 
         else:
-            newLL.addNode(nodeSum)
 
+            tail.next= Node(nodeSum)
+            tail = tail.next
    
 
         l1 = l1.next
         l2 = l2.next
-
-    # curr = newLL
-    # while curr != None:
-    #     print(curr.data)
-    #     curr=curr.next
 
     return newLL
 
 
    
 
-
-
-
-
-
 l1 = Node(3, Node(2, Node(1)))
 l2 = Node(4, Node(3, Node(2)))
-
 
 
 
